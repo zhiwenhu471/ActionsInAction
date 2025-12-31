@@ -48,10 +48,7 @@ jobs:
       max-parallel: 3
       matrix: 
         os_version: [macos-latest, ubuntu-latest]
-        node_version: [12, 14, 16]
-        exclude:
-          - os_version: macos-latest
-            node_version: 14
+        node_version: [16]
     name: my job 5
     runs-on: ${{ matrix.os_version}}
     steps:
