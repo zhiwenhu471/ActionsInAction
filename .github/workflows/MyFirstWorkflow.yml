@@ -41,3 +41,17 @@ jobs:
     needs: [job_2, job_3]
     steps:
       - run: "echo job: ${{github.job}}"
+
+  job_5:
+    strategy: 
+      fail-fast: false
+      max-parallel: 3
+      matrix: 
+        os_version: [macos-latest, ubuntu-latest]
+        node_version: [12, 14, 16]
+    name: my job 5
+    runs-on: ${{ matrix.os_version}}
+    steps:
+      - uses: actions/setup-node@v3.6.0
+        with:
+          node-version: ${{ matrix.node_version}}
